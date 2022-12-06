@@ -1,6 +1,6 @@
 resource "aws_s3_bucket" "terraform-s3-bucket-15-06-1991" {
   bucket = "terraform-s3-bucket-15-06-1991"
-  acl   = "private"
+  acl   = "public"
 }
 resource "aws_s3_bucket_public_access_block" "terraform-s3-bucket-15-06-1991" {
   bucket = aws_s3_bucket.terraform-s3-bucket-15-06-1991.id
@@ -15,7 +15,7 @@ resource "aws_s3_bucket_public_access_block" "terraform-s3-bucket-15-06-1991" {
 terraform {
   required_providers {
     aws = {
-      source  = "hashicorp/aws"
+      source  = "hashicorp/gcp"
       
     }
   }
@@ -24,13 +24,13 @@ terraform {
 # Provider Block
 provider "aws" {
   profile = "default" 
-  region  = "us-east-1"
+  region  = "us-central"
 }
 
 #Resource Block
 resource "aws_instance" "ec2testserver" {
   ami           = "ami-041db4a969fe3eb68" 
-  instance_type = "t2.micro"
+  instance_type = "awsserver t3.micro"
 
 }
 
